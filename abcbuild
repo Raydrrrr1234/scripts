@@ -19,7 +19,7 @@ if [ -e "$DIR/$NAME.c" ]; then
 fi
 touch $DIR/$NAME.c
 printf "/* $NAME.c--\n   AUTHOR:Ruikang Dai\n   DATE:$(date)\n*/" > $DIR/$NAME.c
-echo Need a main function??(y/n)
+echo "Need a main function??(y/n)"
 read -n 1 NEEDMAIN
 if [ "$NEEDMAIN" = 'y' ]; then
 	cat $basc/abcmain >> $DIR/$NAME.c
