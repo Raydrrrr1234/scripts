@@ -1,0 +1,44 @@
+echo Please, enter the new programming file name
+read NAME
+echo "Need header file??(y/n)"
+read -n 1 FLAG
+echo 
+DIR="./$NAME"
+
+#Creating directory
+if [ -d "$DIR" ]; then
+	echo Directory exists! Skip
+else
+	mkdir $DIR
+fi
+
+#Creating .c file
+if [ -e "$DIR/$NAME.c" ]; then
+	echo File exists! Change existed file name to $NAME.c.b with date
+	mv $DIR/$NAME.c $DIR/$NAME.c.b.$(date +%Y%m%d)
+fi
+touch $DIR/$NAME.c
+printf "/* $NAME.c--\n   AUTHOR:Ruikang Dai\n   DATE:$(date)\n*/" > $DIR/$NAME.c
+
+#Creating .h file if needed
+if [ "$FLAG" = 'y' ]; then
+	if [ -e "$DIR/$NAME.h" ]; then
+		echo File exists! Change existed file name to $NAME.h.b with date
+		mv $DIR/$NAME.H $DIR/NAME.c.b.$(date +%Y%m%d)
+	fi
+	touch $DIR/$NAME.h
+	printf "/* $NAME.h--\n   AUTHOR:Ruikang Dai\n   DATE:$(date)\n*/" > $DIR/$NAME.h
+fi
+
+#Creating Makefile
+if [ -e "$DIR/Makefile" ]; then 
+	echo "Makefile exists! Skip!"
+else
+	touch $DIR/Makefile
+	printf "# Makefile--\n# AUTHOR:Ruikang Dai\n# DATE:$(date)\n" > $DIR/Makefile
+fi
+if [ "$FLAG" = 'y' ]; then
+	printf "$NAME: $NAME.o\n	cc $NAME.o -o $NAME\n$NAME.o: $NAME.c $NAME.h\n	cc -c $NAME.c" > $DIR/Makefile
+else
+	printf "$NAME: $NAME.o\n	cc $NAME.o -o $NAME\n$NAME.o: $NAME.c\n	cc -c $NAME.c" > $DIR/Makefile
+fi
