@@ -12,6 +12,7 @@ else
 	mkdir $DIR
 fi
 
+###########################################################
 #Creating .c file
 if [ -e "$DIR/$NAME.c" ]; then
 	echo File exists! Change existed file name to $NAME.c.b with date
@@ -21,9 +22,14 @@ touch $DIR/$NAME.c
 printf "/* $NAME.c--\n   AUTHOR:Ruikang Dai\n   DATE:$(date)\n*/" > $DIR/$NAME.c
 echo "Need a main function??(y/n)"
 read -n 1 NEEDMAIN
+if [ "$FLAG" = 'y' ]; then
+	printf "\n#include \"$NAME.h\"\n" >> $DIR/$NAME.c
+fi
 if [ "$NEEDMAIN" = 'y' ]; then
 	cat $basc/abcmain >> $DIR/$NAME.c
 fi
+
+###########################################################
 #Creating .h file if needed
 if [ "$FLAG" = 'y' ]; then
 	if [ -e "$DIR/$NAME.h" ]; then
@@ -34,6 +40,7 @@ if [ "$FLAG" = 'y' ]; then
 	printf "/* $NAME.h--\n   AUTHOR:Ruikang Dai\n   DATE:$(date)\n*/" > $DIR/$NAME.h
 fi
 
+###########################################################
 #Creating Makefile
 if [ -e "$DIR/Makefile" ]; then 
 	echo "Makefile exists! Skip!"
@@ -46,3 +53,4 @@ if [ "$FLAG" = 'y' ]; then
 else
 	printf "$NAME: $NAME.o\n	cc $NAME.o -o $NAME\n$NAME.o: $NAME.c\n	cc -c $NAME.c" > $DIR/Makefile
 fi
+echo
