@@ -1,0 +1,1 @@
+rm $(find . -type f \( -iname "*.o" -or -iname "*" -not -iname "*.c" -not -iname "Makefile" \))

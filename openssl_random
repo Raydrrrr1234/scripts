@@ -1,0 +1,2 @@
+read NUM
+openssl rand -base64 $NUM >> random_base64

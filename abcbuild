@@ -49,8 +49,8 @@ else
 	printf "# Makefile--\n# AUTHOR:Ruikang Dai\n# DATE:$(date)\n" > $DIR/Makefile
 fi
 if [ "$FLAG" = 'y' ]; then
-	printf "$NAME: $NAME.o\n	cc $NAME.o -o $NAME\n$NAME.o: $NAME.c $NAME.h\n	cc -c $NAME.c" > $DIR/Makefile
+	printf "$NAME: $NAME.o\n	cc $NAME.o -o $NAME\n$NAME.o: $NAME.c $NAME.h\n	cc -c $NAME.c" >> $DIR/Makefile
 else
-	printf "$NAME: $NAME.o\n	cc $NAME.o -o $NAME\n$NAME.o: $NAME.c\n	cc -c $NAME.c" > $DIR/Makefile
+	printf "$NAME: $NAME.o\n	cc $NAME.o -o $NAME\n$NAME.o: $NAME.c\n	cc -c $NAME.c" >> $DIR/Makefile
 fi
 echo
