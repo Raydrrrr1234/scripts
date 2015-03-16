@@ -1,4 +1,5 @@
 #This script is to make a new file with my own title
 #Usage: bash this script and type the file name
 read NAME
-printf "/* $NAME.h--\n   AUTHOR:Ruikang Dai\n   DATE:$(date)\n*/" > $DIR/$NAME
+touch $NAME
+printf "/* $NAME--\n   AUTHOR:Ruikang Dai\n   DATE:$(date)\n*/" > $NAME
