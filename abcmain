@@ -10,7 +10,7 @@
 int main(int argn, char **argv) {
 
 	// Check number of command-line arguments
-	if(argn != 2) {
+	if (argn != 2) {
 
 	}
 

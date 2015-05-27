@@ -26,7 +26,7 @@ if [ "$FLAG" = 'y' ]; then
 	printf "\n#include \"$NAME.h\"\n" >> $DIR/$NAME.c
 fi
 if [ "$NEEDMAIN" = 'y' ]; then
-	cat $basc/abcmain >> $DIR/$NAME.c
+	cat ./abcmain >> $DIR/$NAME.c
 fi
 
 ###########################################################
